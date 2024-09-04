@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="generator" content="Hugo 0.133.1">
+<meta name="viewport" content="width=device-width, initial-scale=1" /><title>Function in Dart | Dart Tutorial</title>
+
+<link
+  rel="icon"
+  href="/images/favicon.png"
+  type="image/x-icon"
+/>
+<link
+    rel="stylesheet"
+    rel="preload"
+    type="text/css"
+    href="/css/main.css"
+  /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/fontawesome.all.min.css"
+    /><link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/external/overlay-scrollbars/overlayscrollbars.min.css"
+    />
+</head>
+  <body onload="browserCompatibility()"><div id="navbarInfo" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box">
+    <div class="card modal-title is-radiusless">
+      <div class="card-header">
+        <p class="card-header-title is-marginless">About</p>
+      </div>
+    </div>
+    <div class="modal-content-container">
+      <div class="modal-content-block is-block">
+</div>
+    </div>
+  </div>
+</div>
+<div id="navbarShortcuts" class="is-hidden modal-container">
+  <div class="modal-content-box modal-text-box"><div class="card modal-title is-radiusless">
+        <div class="card-header">
+          <p class="card-header-title is-marginless">Keyboard shortcuts</p>
+        </div>
+      </div>
+      <div class="modal-content-container">
+        <div class="modal-content-block"><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>q</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show current page QR code</p>
+  </div><div class="modal-content"><kbd>Escape</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Close modals</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>i</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show website information</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>k</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Show shortcuts</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>h</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to homepage</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>f</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Find on website</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>m</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse sidebar</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>t</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Collapse/Uncollapse table of contents</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↑</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the top of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>↓</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Go to the bottom of the page</p>
+  </div><div class="modal-content"><kbd>Shift</kbd><p>+</p><kbd>p</kbd></div>
+  <div class="modal-content">
+    <p class="has-text-weight-normal">Print current page</p>
+  </div></div>
+      </div></div>
+</div>
+<div id="modalContainer" class="is-hidden modal-container">
+  <div id="modal" class="modal-content-box"></div>
+</div>
+<nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
+  <div id="navbarItemsContainer" class="navbar-brand"><div id="globalLogoContainer" class="is-flex">
+  <a
+    id="globalLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="Homepage"
+      src="/images/logo.png"
+    />
+  </a>
+  <a
+    id="globalTouchLogo"
+    class="navbar-item navbar-item-standard is-paddingless"
+    href="/"
+  >
+    <img
+      alt="Homepage"
+      src="/images/logoTouch.png"
+    />
+  </a>
+</div>
+<div id="navbarItems" class="is-flex">
+      <div id="navbarItemsStart" class="is-flex">
+        <div id="searchContainer" class="navbar-item"><div class="control has-icons-left">
+  <span id="searchInput" class="autocomplete">
+    <input
+      id="search"
+      autocomplete="off"
+      class="input"
+      type="search"
+      placeholder="Search"
+    />
+  </span>
+  <span class="icon is-left">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </span>
+  <ul id="searchList" class="is-paddingless is-hidden"></ul>
+</div>
+</div>
+      </div>
+      <div id="navbarItemsEnd" class="is-flex is-invisible"><div class="navbar-item">
+  <a
+    id="printButton"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">Print</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div class="navbar-item">
+  <a
+    id="qrCodeButton"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">QR code</span>
+    <span class="icon">
+      <i class="fa-solid fa-qrcode fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div class="navbar-item">
+  <a
+    id="shortcutsInfo"
+    trigger="navbarShortcuts"
+    class="button navbar-item-standard navbar-trigger"
+    title="Keyboard shortcuts"
+  >
+    <span class="icon-text">Shortcuts</span>
+    <span class="icon">
+      <i class="fa-solid fa-keyboard fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item">
+  <a
+    id="siteInfo"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="About"
+  >
+    <span class="icon-text">About</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div id="navbarExtend" class="navbar-item">
+  <div id="navbarExtendWrapper">
+    <a id="navbarExtendButton" class="button navbar-item-standard">
+      <span class="icon">
+        <i class="fa-solid fa-ellipsis fa-lg"></i>
+      </span>
+    </a>
+    <div id="navbarExtendItemsContainer">
+      <div id="navbarExtendItemsWrapper"><div class="navbar-item">
+  <a
+    id="printButtonExtend"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">Print</span>
+    <span class="icon">
+      <i class="fa-solid fa-print fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div class="navbar-item">
+  <a
+    id="qrCodeButtonExtend"
+    class="button navbar-item-standard"
+  >
+    <span class="icon-text">QR code</span>
+    <span class="icon">
+      <i class="fa-solid fa-qrcode fa-lg"></i>
+    </span>
+  </a>
+</div>
+<div class="navbar-item">
+  <a
+    id="shortcutsInfoExtend"
+    trigger="navbarShortcuts"
+    class="button navbar-item-standard navbar-trigger"
+    title="Keyboard shortcuts"
+  >
+    <span class="icon-text">Shortcuts</span>
+    <span class="icon">
+      <i class="fa-solid fa-keyboard fa-lg"></i>
+    </span>
+  </a>
+</div><div class="navbar-item">
+  <a
+    id="siteInfoExtend"
+    trigger="navbarInfo"
+    class="button navbar-item-standard navbar-trigger"
+    title="About"
+  >
+    <span class="icon-text">About</span>
+    <span class="icon">
+      <i class="fa-solid fa-circle-question fa-lg"></i>
+    </span>
+  </a>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+</nav>
+<div id="navbarOverlay"></div>
+<div
+      class="columns is-mobile is-paddingless is-marginless"
+      id="mainContainer"
+    ><div
+  id="sidebarContainer"
+  class="column is-narrow is-paddingless is-marginless"
+>
+  <div id="sidebarWrapper" class="is-fixed">
+    <div id="sidebar" class="is-marginless">
+      <aside class="menu is-paddingless is-marginless">
+        <ul class="menu-list is-marginless is-paddingless"><div class="card is-fs-expandable-icon"><div class="card-header">
+      <a
+        href='/introducation/'
+        class='card-header-title'>
+        <i class='fa fa-home fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/introducation/'
+        class='card-header-title'
+          title='Introduction'>
+        <i class='fa fa-home fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">Introduction</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/introducation/install-dart/'
+        class='card-header-title'
+          title='Installing Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Installing Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/introducation/basic-program/'
+        class='card-header-title'
+          title='Basic  Program'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Basic  Program</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/introducation/variables/'
+        class='card-header-title'
+          title='Variables'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Variables</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/introducation/datatypes/'
+        class='card-header-title'
+          title='Data Types'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Data Types</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/introducation/comments/'
+        class='card-header-title'
+          title='Comments'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Comments</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/introducation/operators-/'
+        class='card-header-title'
+          title='Operator In Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Operator In Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/introducation/strings-in-dart/'
+        class='card-header-title'
+          title='Strings'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Strings</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/introducation/user-input-/'
+        class='card-header-title'
+          title='User input'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">User input</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header">
+      <a
+        href='/condication-in-dart/'
+        class='card-header-title'>
+        <i class='fa fa-1 fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/condication-in-dart/'
+        class='card-header-title'
+          title='Dart Conditions and Loops'>
+        <i class='fa fa-1 fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">Dart Conditions and Loops</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/condication-in-dart/break-and-continue-in-dart/'
+        class='card-header-title'
+          title='Break and Continue in Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Break and Continue in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/condication-in-dart/loops-in-dart/'
+        class='card-header-title'
+          title='loop in dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">loop in dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/condication-in-dart/exception-handling-in-dart/'
+        class='card-header-title'
+          title='switch case in dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">switch case in dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/condication-in-dart/switch-case-in-dart/'
+        class='card-header-title'
+          title='switch case in dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">switch case in dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/condication-in-dart/ternary-operator-in-dart/'
+        class='card-header-title'
+          title='Ternary Operator in Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Ternary Operator in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header">
+      <a
+        href='/dart--asynchronouse-programming/'
+        class='card-header-title'>
+        <i class='fa fa-2 fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-entries-expandable is-entries-shrinked"><div
+            class="card"><div class="card-header">
+      <a
+        href='/dart--asynchronouse-programming/'
+        class='card-header-title'
+          title=' Dart Asynchronouse Programming'>
+        <i class='fa fa-2 fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1"> Dart Asynchronouse Programming</p></a><a class="card-header-icon is-icon-expandable is-paddingless is-icon-shrinked">
+                <span class='icon'></span>
+              </a>
+            </div>
+          </div><ul class="is-marginless"><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/dart--asynchronouse-programming/async-and-await-in-dart/'
+        class='card-header-title'
+          title='Async and Await in Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Async and Await in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/dart--asynchronouse-programming/best-practices-for-asynchronous-programming-in-dart/'
+        class='card-header-title'
+          title='Best Practices for Asynchronous Programming in Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Best Practices for Asynchronous Programming in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/dart--asynchronouse-programming/error-handling-in-asynchronous-dart/'
+        class='card-header-title'
+          title='Error Handling in Asynchronous Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Error Handling in Asynchronous Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/dart--asynchronouse-programming/future-in-dart/'
+        class='card-header-title'
+          title='Future in Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Future in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/dart--asynchronouse-programming/handling-concurrent-asynchronous-operations/'
+        class='card-header-title'
+          title='Handling Concurrent Asynchronous Operations in Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Handling Concurrent Asynchronous Operations in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/dart--asynchronouse-programming/isolates-in-dart/'
+        class='card-header-title'
+          title='Isolates in Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Isolates in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/dart--asynchronouse-programming/microtasks-and-event-loops-in-dart/'
+        class='card-header-title'
+          title='Microtasks and Event Loops in Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Microtasks and Event Loops in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/dart--asynchronouse-programming/single-subscription-vs.-broadcast-streams/'
+        class='card-header-title'
+          title='Single Subscription vs. Broadcast Streams in Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Single Subscription vs. Broadcast Streams in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/dart--asynchronouse-programming/stream-in-dart/'
+        class='card-header-title'
+          title='Streams in Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Streams in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="">
+      <div class=""><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/dart--asynchronouse-programming/using-completer-in-dart/'
+        class='card-header-title'
+          title='Using Completer in Dart'>
+        <i class='fa-solid fa-turn-up fa-rotate-90 fa-xs'></i><p class="pt-0 pb-0 pr-2 pl-0">Using Completer in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div></ul></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header is-single-link">
+      <a
+        href='/const-in-dart/'
+        class='card-header-title'>
+        <i class='fa fa-3 fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/const-in-dart/'
+        class='card-header-title'
+          title='Const In Dart'>
+        <i class='fa fa-3 fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">Const In Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header is-single-link">
+      <a
+        href='/dart-file-handling/'
+        class='card-header-title'>
+        <i class='fa fa-4 fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/dart-file-handling/'
+        class='card-header-title'
+          title='Dart File Handlingt'>
+        <i class='fa fa-4 fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">Dart File Handlingt</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon is-sidebar-active"><div class="card-header is-single-link">
+      <a
+        href='/funcation-in-dart/'
+        class='card-header-title'>
+        <i class='fa fa-5 fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless is-tree-active"><div
+            class="card is-sidebar-active"id='sidebarActiveEntry'><div class="card-header is-single-link">
+      <a
+        href='/funcation-in-dart/'
+        class='card-header-title'
+          title='Function in Dart'>
+        <i class='fa fa-5 fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">Function in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header is-single-link">
+      <a
+        href='/list-in-dart/'
+        class='card-header-title'>
+        <i class='fa fa-6 fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/list-in-dart/'
+        class='card-header-title'
+          title='List in Dart'>
+        <i class='fa fa-6 fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">List in Dart</p></a></div>
+          </div></li>
+      </div>
+    </div><div class="card is-fs-expandable-icon"><div class="card-header is-single-link">
+      <a
+        href='/null-safety-in-dart/'
+        class='card-header-title'>
+        <i class='fa fa-7 fa-lg'></i></a></div>
+      </div><div class="is-expandable">
+      <div class="is-sidebar-list-wrapper"><li class="is-marginless"><div
+            class="card"><div class="card-header is-single-link">
+      <a
+        href='/null-safety-in-dart/'
+        class='card-header-title'
+          title='Null Safety In Dart In Dart'>
+        <i class='fa fa-7 fa-lg'></i><p class="pt-0 pb-0 pr-2 pl-1">Null Safety In Dart In Dart</p></a></div>
+          </div></li>
+      </div>
+    </div></ul>
+      </aside>
+    </div>
+    <div id="sidebarCollapsible" class="is-marginless">
+      <div class="card is-uncollapse-action">
+        <div
+          id="sidebarUncollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-right fa-lg"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card is-collapse-action">
+        <div
+          id="sidebarCollapse"
+          class="card-header is-single-link"
+          title="Collapse/Uncollapse sidebar"
+        >
+          <a class="card-header-title">
+            <i class="fa-solid fa-angles-left fa-lg"></i>
+            <p>Collapse sidebar</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sidebarMobileWrapper" class="column is-narrow is-hidden-desktop"></div>
+<div class="columns is-mobile is-marginless is-scroll-smooth has-toc" id="contentContainer">
+  <div class="column" id="content"><div id="contentTitle">Function in Dart</div>
+<h3 id='function-in-dart'>Function in Dart<a href='#function-in-dart' class='anchor'>#</a>
+</h3><h3 id='about'>About<a href='#about' class='anchor'>#</a>
+</h3><p>Functions in Dart are fundamental building blocks that encapsulate a set of instructions to perform specific tasks. They can take inputs (parameters), execute operations, and return outputs. Dart functions can be named or anonymous and support both synchronous and asynchronous execution, making them versatile for various programming needs.</p>
+<h3 id='work'>Work<a href='#work' class='anchor'>#</a>
+</h3><p>In Dart, functions work by executing the code within their body when called. They can perform operations like calculations, data manipulations, or triggering other functions. Dart functions can return a value to the caller or simply execute code for its side effects. They support various features like optional parameters, named parameters, and closures, enhancing their flexibility.</p>
+<h3 id='why-use'>Why Use<a href='#why-use' class='anchor'>#</a>
+</h3><p>Using functions in Dart allows for code reusability, organization, and modularity. By breaking down complex problems into smaller, manageable functions, developers can write more maintainable and readable code. Functions also help in abstracting logic, making code easier to test and debug. The ability to pass functions as arguments or return them adds to the language&rsquo;s expressive power.</p>
+<h3 id='how-to-use'>How to Use<a href='#how-to-use' class='anchor'>#</a>
+</h3><p>To use a function in Dart, you first define it using the <code>void</code> keyword if it doesn&rsquo;t return a value, or specify the return type if it does. Then, call the function by its name followed by parentheses. You can pass arguments if the function expects parameters. Dart also supports defining anonymous functions and using arrow syntax for short, single-expression functions.</p>
+<p><strong>Example Usage:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#75715e">// Defining a named function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> greet(<span style="color:#66d9ef">String</span> name) {
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#39;Hello, </span><span style="color:#e6db74">$</span>name<span style="color:#e6db74">!&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Using the function in the main method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> main() {
+</span></span><span style="display:flex;"><span>  greet(<span style="color:#e6db74">&#39;Dart Developer&#39;</span>); <span style="color:#75715e">// Calls the function and prints: Hello, Dart Developer!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id='using-anonymous-functions'>Using Anonymous Functions:<a href='#using-anonymous-functions' class='anchor'>#</a>
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> main() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> list <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;apples&#39;</span>, <span style="color:#e6db74">&#39;bananas&#39;</span>, <span style="color:#e6db74">&#39;oranges&#39;</span>];
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Using an anonymous function with forEach
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  list.forEach((item) {
+</span></span><span style="display:flex;"><span>    print(item);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id='defining-and-using-an-arrow-function'>Defining and Using an Arrow Function:<a href='#defining-and-using-an-arrow-function' class='anchor'>#</a>
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#75715e">// Arrow function to add two numbers
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> add(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) <span style="color:#f92672">=&gt;</span> a <span style="color:#f92672">+</span> b;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> main() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> add(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>  print(result); <span style="color:#75715e">// Outputs: 8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id='higher-order-function-example'>Higher-Order Function Example:<a href='#higher-order-function-example' class='anchor'>#</a>
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> execute(Function operation) {
+</span></span><span style="display:flex;"><span>  operation();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> sayGoodbye() {
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#39;Goodbye, Dart!&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> main() {
+</span></span><span style="display:flex;"><span>  execute(sayGoodbye); <span style="color:#75715e">// Calls the higher-order function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id='using-closures'>Using Closures:<a href='#using-closures' class='anchor'>#</a>
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Function makeAdder(<span style="color:#66d9ef">int</span> addBy) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">int</span> i) <span style="color:#f92672">=&gt;</span> addBy <span style="color:#f92672">+</span> i;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> main() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> add10 <span style="color:#f92672">=</span> makeAdder(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>  print(add10(<span style="color:#ae81ff">5</span>)); <span style="color:#75715e">// Outputs: 15
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id='scope-example'>Scope Example:<a href='#scope-example' class='anchor'>#</a>
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> main() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> outsideFunction <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// Global to this scope
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> nestedFunction() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> insideNested <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">// Local to nestedFunction
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    print(outsideFunction); <span style="color:#75715e">// Accessible here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  nestedFunction();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id='using-the-math-library'>Using the Math Library:<a href='#using-the-math-library' class='anchor'>#</a>
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:math&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> main() {
+</span></span><span style="display:flex;"><span>  print(sin(pi <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)); <span style="color:#75715e">// Prints 1.0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id='function-in-dart-a-quick-overview'>Function in Dart: A Quick Overview<a href='#function-in-dart-a-quick-overview' class='anchor'>#</a>
+</h3><ul>
+<li><strong>Functions</strong>: Core units in Dart that perform specific tasks. They can be named or anonymous.</li>
+<li><strong>Parameters</strong>: Functions can accept input values (parameters) and may return a result.</li>
+<li><strong>Arrow Functions</strong>: Shorthand for single-expression functions using <code>=&gt;</code>.</li>
+<li><strong>Usage</strong>: Define with <code>void</code> or a return type, call by name with parentheses. Anonymous functions are used for temporary tasks.</li>
+<li><strong>Benefits</strong>: Functions make code reusable, organized, and easier to maintain.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> greet(<span style="color:#66d9ef">String</span> name) <span style="color:#f92672">=&gt;</span> print(<span style="color:#e6db74">&#39;Hello, </span><span style="color:#e6db74">$</span>name<span style="color:#e6db74">!&#39;</span>);
+</span></span></code></pre></div></div><div class="column is-sticky is-paddingless" id="tocWrapper">
+  <div class="is-paddingless" id="tocContainer">
+    <div class="toc-header">
+      <h6 class="toc-title is-marginless">On this page:</h6>
+      <i
+        title="Back to top"
+        id="tocBackToTop"
+        class="fa-solid fa-circle-arrow-up"
+      ></i>
+    </div>
+    <div id="tocContent">
+      <div id="toc"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#function-in-dart">Function in Dart</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#why-use">Why Use</a></li>
+        <li><a href="#how-to-use">How to Use</a></li>
+        <li><a href="#using-anonymous-functions">Using Anonymous Functions:</a></li>
+        <li><a href="#defining-and-using-an-arrow-function">Defining and Using an Arrow Function:</a></li>
+        <li><a href="#higher-order-function-example">Higher-Order Function Example:</a></li>
+        <li><a href="#using-closures">Using Closures:</a></li>
+        <li><a href="#scope-example">Scope Example:</a></li>
+        <li><a href="#using-the-math-library">Using the Math Library:</a></li>
+        <li><a href="#function-in-dart-a-quick-overview">Function in Dart: A Quick Overview</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      <div id="taxonomies"><div class="taxonomy-wrapper"></div><div class="taxonomy-wrapper"></div></div>
+    </div>
+  </div>
+  <div
+    class="is-paddingless"
+    id="tocCollapsible"
+    title="Collapse/Uncollapse table of contents"
+  >
+    <i class="fa-solid fa-angles-right fa-lg"></i>
+  </div>
+</div>
+</div>
+</div><script type='text/javascript'>
+  const baseUrl = 'http:\/\/localhost:1313\/';
+  const codeCopyBefore = 'Copy to clipboard';
+  const codeCopyAfter = 'Copied to clipboard';
+  const svgDownloadLabel = 'Download as SVG';
+  const helperLoadingLabel = 'Loading';
+  const searchNoResults = 'No result found';
+  const introNextLabel = 'Next';
+  const introPrevLabel = 'Previous';
+  const introSkipLabel = '✗';
+  const introDoneLabel = 'Done';
+  const printLabel = 'Print current page';
+  const qrCodeLabel = 'Show current page QR code';
+  const naCommonLabel = 'Not available';
+</script>
+<script
+      type="module"
+      src="/js/theme/modules/const.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpers.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/modules/helpersGlobal.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/init.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/navbar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/print.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/qrcode.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/search.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/shortcuts.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/sidebar.min.js"
+    ></script><script
+      type="module"
+      src="/js/theme/toc.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/theme/browserCompatibility.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/flexsearch/flexsearch.bundle.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/qrious/qrious.min.js"
+    ></script><script
+      type="text/javascript"
+      src="/js/external/overlay-scrollbars/overlayscrollbars.min.js"
+    ></script>
+</body>
+</html>
