@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Const In Dart on Dart Tutorial</title>
-    <link>https://example.org/const-in-dart/</link>
+    <link>https://arjunadhikari.info.np/test/public/const-in-dart/</link>
     <description>Recent content in Const In Dart on Dart Tutorial</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://example.org/const-in-dart/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://arjunadhikari.info.np/test/public/const-in-dart/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

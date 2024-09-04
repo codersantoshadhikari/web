@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Variables on Dart Tutorial</title>
-    <link>https://example.org/introducation/variables/</link>
+    <link>https://arjunadhikari.info.np/test/public/introducation/variables/</link>
     <description>Recent content in Variables on Dart Tutorial</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://example.org/introducation/variables/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://arjunadhikari.info.np/test/public/introducation/variables/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
