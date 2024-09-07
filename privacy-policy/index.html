@@ -8,102 +8,92 @@
     <style>
         /* Basic styles for body and container */
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Georgia", serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: #f4f4f4;
             color: #333;
+            line-height: 1.8;
         }
 
         .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         /* Header styles */
-        h1, h2 {
-            color: #0056b3;
+        h1 {
+            color: #4a4a4a;
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 25px;
         }
 
-        /* Paragraph styles */
+        h2 {
+            color: #2d2d2d;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+
+        /* Paragraph and text styles */
         p {
-            line-height: 1.6;
-            margin-bottom: 15px;
+            font-size: 1.1em;
+            margin-bottom: 20px;
         }
 
         /* Unordered list styles */
         ul {
-            list-style-type: none;
-            padding: 0;
+            list-style-type: square;
+            margin-left: 20px;
+            margin-bottom: 30px;
         }
 
-        /* List item hover animation */
+        /* Classic hover effect for list items */
         li {
             margin-bottom: 10px;
-            padding: 10px;
-            transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+            padding: 5px;
             border-radius: 4px;
-            cursor: pointer;
+            transition: background-color 0.3s, padding-left 0.3s;
         }
 
         /* Hover effect for list items */
         li:hover {
-            color: #fff;
-            background-color: #0056b3;
-            transform: translateX(15px) scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            background-color: #eee;
+            padding-left: 15px;
         }
 
-        /* Link hover animation */
+        /* Link styling and hover effect */
         a {
-            color: #0056b3;
+            color: #0077b3;
             text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+            transition: color 0.3s, border-bottom 0.3s;
         }
 
-        /* Hover effect for links */
-        a::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: #ff6347;
-            bottom: -4px;
-            left: 0;
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        /* Underline animation on hover */
         a:hover {
-            color: #ff6347;
+            color: #333;
+            border-bottom: 1px solid #0077b3;
         }
 
-        /* Grow underline effect */
-        a:hover::after {
-            transform: scaleX(1);
-        }
-
-        /* Footer styles */
+        /* Footer styling */
         .footer {
             text-align: center;
-            padding: 20px;
+            margin-top: 50px;
             font-size: 14px;
-            color: #777;
+            color: #666;
         }
 
-        /* Container hover effects */
+        /* Container hover effect */
         .container:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-
     </style>
 </head>
 <body>
